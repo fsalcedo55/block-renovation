@@ -1,6 +1,3 @@
-let items = ["red", "blue", "red", "green", "blue"]; // Length = n
-let order = ["blue", "red", "black"]; // Length = k
-
 /*
 Time Complexity:
 The time complexity of this algorithm is O(n + k^2). 
@@ -15,7 +12,16 @@ The space complexity of the algorithm is O(n). The new object (itemsObj) is prop
 number of colors "order" has. Essentially, a new object (itemsObj) is created from "items" based
 on the colors required from the "order". The new object (itemsObj) makes it way faster to
 iterate over as "items" scales up.
+
+itemsObj = {
+  blue: 2,
+  red: 2,
+  green: 1
+}
 */
+
+let items = ["red", "blue", "red", "green", "blue"]; // Length = n
+let order = ["blue", "red", "black"]; // Length = k
 
 function orderArray(items, order) {
   const [itemsObj, newArr] = [{}, []];
@@ -26,9 +32,7 @@ function orderArray(items, order) {
   order.forEach((orderEl) => {
     let count = itemsObj[orderEl];
     if (orderEl in itemsObj) {
-      for (let i = 0; i < count; i++) {
-        newArr.push(orderEl);
-      }
+      for (let i = 0; i < count; i++) newArr.push(orderEl);
     }
   });
   return newArr;
